@@ -21,8 +21,16 @@ service.interceptors.request.use((config:InternalAxiosRequestConfig)=>{
 
 // 响应拦截器
 service.interceptors.response.use((response:AxiosResponse)=>{
-
-  return response
+  if(response.data.code!=200){
+    ElNotification({
+        title:"Error",
+        message:response.data.message,
+        type:"error"
+    })
+  }else{
+      return response.data
+  }
+  
 },(error:AxiosError)=>{
   ElNotification({
     title:"Error",

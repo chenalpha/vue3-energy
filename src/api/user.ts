@@ -11,3 +11,5 @@ interface LoginParams{
 function loginApi(data:LoginParams):Promise<any>{
   return post(Api.Login,data)
 }
+
+export {loginApi}
